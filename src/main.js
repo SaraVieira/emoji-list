@@ -49,7 +49,7 @@ export default ({ emojis }) => {
           filteredEmojis.map(emoji => (
             <li className="pa1 list f7" key={emoji.path}>
               <button onClick={() => download(emoji)}>
-                <LazyLoad height={26} offset={100}>
+                <LazyLoad height={26} offset={200}>
                   <img src={`${BASE}/${emoji.path}`} alt={emoji.unicode} />
                 </LazyLoad>
               </button>
