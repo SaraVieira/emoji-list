@@ -57,13 +57,15 @@ body button {
   height: 52px;
   border-radius: 50%;
   background: #ffcc33;
-  left: 74px;
-  top: 20px;
   -webkit-animation: lds-ball 1s linear infinite;
   animation: lds-ball 1s linear infinite;
 }
 .lds-ball {
   width: 200px !important;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50) translateY(-50%);
+  position: absolute;
   height: 200px !important;
   -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
   transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
