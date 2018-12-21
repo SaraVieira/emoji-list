@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import LazyLoad, { forceCheck } from 'react-lazyload';
 
 const BASE =
   "https://rawcdn.githack.com/googlei18n/noto-emoji/07ad7f0f4dc1bfb03221c2004c7cc60c6b79b25e/svg";
@@ -15,7 +16,6 @@ export default ({ emojis }) => {
       console.log(emojis)
       return reset()
     }
-
     setFilteredEmojis(
       filteredEmojis.filter(
         e => value.includes(String.fromCodePoint(parseInt(e.unicode, 16)))
@@ -32,6 +32,8 @@ export default ({ emojis }) => {
     [emojis]
   );
 
+  useEffect(() => forceCheck(), [filteredEmojis])
+
   return (
     <main>
       <h1 className="tc">Download all emoji svg's</h1>
@@ -47,9 +49,9 @@ export default ({ emojis }) => {
           filteredEmojis.map(emoji => (
             <li className="pa1 list f7" key={emoji.path}>
               <button onClick={() => download(emoji)}>
-                <span className="visuallyhidden" />
-
-                <img src={`${BASE}/${emoji.path}`} alt={emoji.unicode} />
+                <LazyLoad height={26} offset={100}>
+                  <img src={`${BASE}/${emoji.path}`} alt={emoji.unicode} />
+                </LazyLoad>
               </button>
             </li>
           ))

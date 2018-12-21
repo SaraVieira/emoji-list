@@ -9,6 +9,7 @@
     "halogen": "0.2.0",
     "react": "next",
     "react-dom": "next",
+    "react-lazyload": "2.3.0",
     "react-scripts": "2.0.3",
     "tachyons": "4.11.1"
   },
