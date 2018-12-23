@@ -41,7 +41,7 @@ export default ({ emojis }) => {
       <input
         type="search"
         className="pa2 w-100"
-        placeholder="Please only seach with the emoji you want"
+        placeholder="Please only search with the emoji you want"
         onChange={e => searchEmojis(e)}
       />
       <ul className="emojis pa0 mt4">
