@@ -2,7 +2,7 @@ import React, { useEffect, useState, Fragment } from "react";
 import ReactDOM from "react-dom";
 import shuffle from "./shuffle.js";
 import Header from "./header";
-import getIcons from "./api.js";
+import {google} from "./api.js";
 import Main from "./main";
 
 import "./styles.css";
@@ -12,7 +12,7 @@ function App() {
   const [emojis, setEmojis] = useState([]);
 
   useEffect(() => {
-    getIcons().then(newIcons => setEmojis(shuffle(newIcons)));
+    google().then(newIcons => setEmojis(shuffle(newIcons)));
   }, []);
 
   return (

@@ -34,6 +34,15 @@ export default ({ emojis }) => {
 
   useEffect(() => forceCheck(), [filteredEmojis])
 
+  const constructEmoji = (unicode) => {
+    const values = unicode.split('_')
+    let code = [];
+
+    values.map(a => code.push(parseInt(a, 16)))
+
+    return String.fromCodePoint(...code)
+  }
+
   return (
     <main>
       <h1 className="tc">Download all emoji svg's</h1>
@@ -41,7 +50,7 @@ export default ({ emojis }) => {
       <input
         type="search"
         className="pa2 w-100"
-        placeholder="Please only seach with the emoji you want"
+        placeholder="Please only search with the emoji you want"
         onChange={e => searchEmojis(e)}
       />
       <ul className="emojis pa0 mt4">
@@ -49,9 +58,7 @@ export default ({ emojis }) => {
           filteredEmojis.map(emoji => (
             <li className="pa1 list f7" key={emoji.path}>
               <button onClick={() => download(emoji)}>
-                <LazyLoad height={26} offset={200}>
-                  <img src={`${BASE}/${emoji.path}`} alt={emoji.unicode} />
-                </LazyLoad>
+                  {constructEmoji(emoji.unicode)}
               </button>
             </li>
           ))
